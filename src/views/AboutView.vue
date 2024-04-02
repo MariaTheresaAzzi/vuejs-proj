@@ -3,7 +3,7 @@
     <h1>This is an about page</h1>
     <div class="flex-row">
     <img alt="Vue logo" src="../assets/logo.png">
-    <p>
+    <p data-test="about-section">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
       tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
       veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
