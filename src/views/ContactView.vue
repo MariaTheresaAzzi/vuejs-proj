@@ -3,13 +3,13 @@
     <h1>Contact Us</h1>
     <p>Feel free to contact us for any inquiries or feedback.</p>
     <form class="flex">
-      <label>Full Name</label>
+      <label>Full Name*</label>
       <input type="text" v-model="fullName" />
 
-      <label>Email</label>
+      <label>Email*</label>
       <input type="email" v-model="email" />
 
-      <label>Message</label>
+      <label>Message*</label>
       <textarea type="text" v-model="message"></textarea>
 
       <button :disabled="isButtonDisabled">Send</button>
