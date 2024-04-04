@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <h1 data-test="about-data">This is an about page</h1>
     <div class="flex-row">
     <img alt="Vue logo" src="../assets/logo.png">
     <p data-test="about-section">

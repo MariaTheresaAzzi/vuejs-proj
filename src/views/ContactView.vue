@@ -1,18 +1,18 @@
 <template>
   <div class="contact">
-    <h1>Contact Us</h1>
-    <p>Feel free to contact us for any inquiries or feedback.</p>
-    <form class="flex">
-      <label>Full Name*</label>
-      <input type="text" v-model="fullName" />
+    <h1 data-test="contact-data">Contact Us</h1>
+    <p data-test="contact-text">Feel free to contact us for any inquiries or feedback.</p>
+    <form class="flex" id="contact">
+      <label data-test="fullname-label">Full Name*</label>
+      <input type="text" name="fullname" v-model="fullName" data-test="fullname-input" />
 
-      <label>Email*</label>
-      <input type="email" v-model="email" />
+      <label data-test="email-label">Email*</label>
+      <input type="email" name="email" v-model="email" data-test="email-input" />
 
-      <label>Message*</label>
-      <textarea type="text" v-model="message"></textarea>
+      <label data-test="message-text">Message*</label>
+      <textarea type="text" name="message" v-model="message" data-test="message-input"></textarea>
 
-      <button :disabled="isButtonDisabled">Send</button>
+      <button :disabled="isButtonDisabled" type="submit">Send</button>
     </form>
   </div>
 </template>
