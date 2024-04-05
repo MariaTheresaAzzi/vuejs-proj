@@ -1,36 +1,36 @@
-import NavBar from "./NavBar.vue";
-import "../styles.css";
+import { createMemoryHistory } from "vue-router";
+import NavBar from "../../src/components/NavBar.vue";
+import { createRouter } from "vue-router";
 
-describe("<NavBar />", () => {
-  it("renders", () => {
-    cy.mount(NavBar);
-    cy.get('[to="/"]').should("contain.text", "Home");
-    cy.get('[to="/about"]').should("contain.text", "About");
-    cy.get('[to="/contact"]').should("contain.text", "Contact");
-  });
-
+describe("NavBar Component", () => {
   it("navigates to correct routes when clicked", () => {
-    cy.mount(NavBar);
+    const routes = [
+      { path: "/", name: "home" },
+      { path: "/about", name: "about" },
+      { path: "/contact", name: "contact" },
+    ];
+
+    const router = createRouter({
+      history: createMemoryHistory(),
+      routes,
+    });
+
+    cy.mount(NavBar, { router });
+
+    cy.wrap(router.push('/'))
+
     cy.get('[to="/"]').should("contain.text", "Home").click();
     cy.url().then((url) => {
       console.log("Current URL:", url);
     });
+    // cy.url().should("eq", Cypress.config().baseUrl + "/");
+
+    cy.get('[to="/about"]').should("contain.text", "About").click();
+    // cy.url().should("eq", Cypress.config().baseUrl + "/about");
+
+    cy.get('[to="/contact"]').should("contain.text", "Contact Us").click();
+    // cy.url().should("eq", Cypress.config().baseUrl + "/contact");
+
+    // cy.mount(NavBar, { router });
   });
-
-  // it("navigates to correct routes when clicked", () => {
-  //   cy.mount(NavBar);
-
-  //   // Click on navigation links and assert the URL changes
-  //   cy.get('[to="/"]').click();
-  // cy.url().then((url) => {
-  //   console.log("Current URL:", url);
-  // });
-  //   cy.url().should("eq", "http://localhost:8081/__cypress/iframes/index.html?specPath=C:/Users/maria/VueJs%20proj/vue-proj-1/second-proj/src/components/NavBar.cy.js");
-
-  //   cy.get("nav").contains("About").click();
-  //   cy.url().should("eq", Cypress.config().baseUrl + "/about");
-
-  //   cy.get("nav").contains("Contact Us").click();
-  //   cy.url().should("eq", Cypress.config().baseUrl + "/contact");
-  // });
 });
